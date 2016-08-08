@@ -23,15 +23,9 @@ public class mainMovies {
 		movies.add(new Movies("Concussion", "drama"));
 		movies.add(new Movies("The Revenant", "drama"));
 
-		// sort movie categories
 		sortedCategories(movies);
 
 		printSortedCategories(movies);
-/*
-		System.out.println("These are the categories. ");
-		for (int i = 0; i < movies.size(); i++) {
-			System.out.println(movies.get(i).getCategory());
-		}*/
 
 		String choice = "yes";
 		while (choice.equalsIgnoreCase("yes")) {
@@ -39,6 +33,11 @@ public class mainMovies {
 			System.out.println("What category do you want to look at?");
 			Scanner scan1 = new Scanner(System.in);
 			String input = scan1.nextLine();
+			
+			while (!(input.equalsIgnoreCase("animated") || input.equalsIgnoreCase("drama") || input.equalsIgnoreCase("scifi") || input.equalsIgnoreCase("fantasy") || input.equalsIgnoreCase("comedy"))) {
+				System.out.println("That's not a valid category. Please enter a category.");
+				input = scan1.nextLine();
+			}
 
 			for (int j = 0; j < movies.size(); j++) {
 				if (input.equalsIgnoreCase(movies.get(j).getCategory())) {
@@ -55,6 +54,7 @@ public class mainMovies {
 				System.out.println("Goobye!");
 			}
 		}
+		//scan1.close();
 	}
 
 	public static void printSortedCategories(ArrayList<Movies> movies) {
@@ -64,7 +64,6 @@ public class mainMovies {
 					System.out.println(movies.get(j).getCategory());
 				}
 			}
-
 		}
 		System.out.println(movies.get(movies.size() - 1).getCategory());
 	}
